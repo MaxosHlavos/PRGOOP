@@ -31,7 +31,7 @@ class Pet {
         ]);
     }
 
-    public static function all() {
+        public static function all() {
         $pdo = Database::getInstance()->getConnection();
 
         $stmt = $pdo->query("SELECT * FROM pets");
@@ -51,6 +51,12 @@ class Pet {
 
         return $pets;
     }
+
+    public function getId() { return $this->id; }
+    public function getName() { return $this->name; }
+    public function getAge() { return $this->age; }
+    public function getType() { return $this->type; }
+    public function getBreed() { return $this->breed; }
 }
 
 

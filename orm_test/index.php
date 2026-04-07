@@ -1,14 +1,16 @@
 <?php
+require_once "Pet.php";
 require_once "Dog.php";
 require_once "Cat.php";
 
 
-$dog = new Dog("Rex", 4, "Labrador");
-$dog->save();
+if (isset($_GET["add"])) {
+    $dog = new Dog("Rex", 4, "Labrador");
+    $dog->save();
 
-$cat = new Cat("Micka", 2, "Siamská");
-$cat->save();
-
+    $cat = new Cat("Micka", 2, "Siamská");
+    $cat->save();
+}
 
 $pets = Pet::all();
 ?>
@@ -17,9 +19,10 @@ $pets = Pet::all();
 
 <?php foreach ($pets as $pet): ?>
     <p>
-        <?= $pet->name ?> |
-        <?= $pet->age ?> |
-        <?= $pet->type ?> |
-        <?= $pet->breed ?>
+        <?= $pet->getName() ?> |
+        <?= $pet->getAge() ?> |
+        <?= $pet->getType() ?> |
+        <?= $pet->getBreed() ?>
     </p>
 <?php endforeach; ?>
+
